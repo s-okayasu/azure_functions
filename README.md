@@ -1,2 +1,2 @@
 # azure_functions
-Azureのアプリ開発、個人用。
+Azure関数アプリ開発、個人用。
