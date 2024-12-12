@@ -12,7 +12,8 @@ def get_config():
     # 値の取得
     config = {
         "SLACK_API_TOKEN" : config['SLACK']['SLACK_API_TOKEN'],
-        "SLACK_CHANNEL_ID" : config['SLACK']['SLACK_CHANNEL_ID']
+        "SLACK_CHANNEL_ID" : config['SLACK']['SLACK_CHANNEL_ID'],
+        "USERS" : config['SLACK']['USERS']
     }
 
     return config
