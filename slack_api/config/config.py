@@ -7,13 +7,13 @@ def get_config():
 
     # 設定ファイル読み込み
     config_path = os.path.join(os.path.dirname(__file__), 'config.ini')
-    config.read(config_path)
+    config.read(config_path, encoding='utf-8')
 
     # 値の取得
     config = {
         "SLACK_API_TOKEN" : config['SLACK']['SLACK_API_TOKEN'],
         "SLACK_CHANNEL_ID" : config['SLACK']['SLACK_CHANNEL_ID'],
-        "USERS" : config['SLACK']['USERS']
+        #"USERS" : config['SLACK']['USERS']
     }
 
     return config
