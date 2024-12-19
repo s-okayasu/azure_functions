@@ -1,28 +1,24 @@
-from boxsdk import JWTAuth, Client
+from boxsdk import Client, OAuth2
 
-# 設定ファイルのパスを指定
-config_file = r'784521776_z329yir3_config.json'
+# アクセストークンを使用してBoxクライアントを作成
+oauth2 = OAuth2(
+    client_id='08l9yi0hw47ru94ogbe4v1sct4s0e1ig',
+    client_secret='a5GVNYDeHKcrTiqYdBh6NuqTX43MrxTT',
+    access_token='UrcAl5eFsVi50UgapZ35QBxTmO5BYUAu',
+)
+client = Client(oauth2)
 
-# JWTAuth を作成
+folder_id = '297827171827'
+root_folder = client.folder(folder_id=folder_id)
+
+# アップロードするファイルのパスと名前
+file_path = 'local_file.txt'
+file_name = 'local_file.txt'
+
 try:
-    auth = JWTAuth.from_settings_file(config_file)
-    print("JWTAuth が正しく設定されました。")
-except FileNotFoundError:
-    print("設定ファイルが見つかりません。")
+    # フォルダにファイルをアップロード
+    with open(file_path, 'rb') as file:
+        uploaded_file = client.folder(folder_id).upload_stream(file, file_name)
+        print(f"ファイルがアップロードされました: {uploaded_file.id}")
 except Exception as e:
-    print(f"エラー: {e}")
-
-# Box クライアントを作成
-try:
-    client = Client(auth)
-    print("Box クライアントが作成されました。")
-
-    # テスト: ルートフォルダのアイテムを取得
-    root_folder = client.folder(folder_id='297827171827')  # '0' はルートフォルダ
-    items = root_folder.get_items()
-    print(items)
-    print("フォルダ内のアイテム一覧:")
-    for item in items:
-        print(f"名前: {item.name}, タイプ: {item.type}, ID: {item.id}")
-except Exception as e:
-    print(f"クライアント作成中にエラーが発生しました: {e}")
+    print(f"エラーが発生しました: {e}")

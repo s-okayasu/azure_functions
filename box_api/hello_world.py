@@ -2,9 +2,9 @@ from boxsdk import Client, OAuth2
 
 # アクセストークンを使用してBoxクライアントを作成
 oauth2 = OAuth2(
-    client_id='',
-    client_secret='',
-    access_token='',
+    client_id='08l9yi0hw47ru94ogbe4v1sct4s0e1ig',
+    client_secret='a5GVNYDeHKcrTiqYdBh6NuqTX43MrxTT',
+    access_token='UrcAl5eFsVi50UgapZ35QBxTmO5BYUAu',
 )
 client = Client(oauth2)
 
